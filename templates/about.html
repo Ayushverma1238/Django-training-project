@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .about-container{
+        width:95vw;
+        margin:auto;
+
+    }
+    .about-hero{
+        display:flex;
+        flex-direction:column;
+        justify-items:center;
+        align-items:center;
+        gap:10px;
+    }
+
+    .about-hero > h1{
+        margin-top:10px;
+        font-size:40px;
+
+    }
+
+    .about-content{
+        width:75vw;
+        margin:auto;
+        display:flex;
+        flex-direction:column;
+       margin-top:10px;
+       margin-bottom:10px;
+        gap:10px;
+
+    }
+    .about-section > ul > li {
+        margin-left:50px;
+    }
+
+    .about-section > p {
+        color:green;
+    }
+
+</style>
+
+<div class="about-container">
+    <section class="about-hero">
+        <h1>About Us</h1>
+        <p class="subtitle">Your Trusted Online Shopping Destination</p>
+    </section>
+
+    <section class="about-content">
+        <div class="about-section">
+            <h2>Our Story</h2>
+            <p>
+                Welcome to our eCommerce platform. We are committed to providing 
+                high-quality products and exceptional customer service to shoppers worldwide.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>Our Mission</h2>
+            <p>
+                Our mission is to make online shopping convenient, affordable, and enjoyable 
+                for every customer. We strive to offer the best products at competitive prices.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>Why Choose Us?</h2>
+            <ul>
+                <li>Wide selection of quality products</li>
+                <li>Competitive pricing</li>
+                <li>Fast and reliable shipping</li>
+                <li>Excellent customer support</li>
+                <li>Secure payment options</li>
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h2>Contact Us</h2>
+            <p>
+                Have questions? We'd love to hear from you.
+                <a href="{% url 'contact' %}">Get in touch with our team</a>
+            </p>
+        </div>
+    </section>
+</div>
+{% endblock %}

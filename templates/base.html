@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUXE — Fashion Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="../static/css/base.css" rel="stylesheet" />
+ 
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announce">
+    Free shipping on orders above ₹999 &nbsp;·&nbsp; New arrivals every Friday &nbsp;·&nbsp; Use code LUXE20 for 20% off
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="#">Women</a>
+      <a href="#">Men</a>
+      <a href="#">Kids</a>
+      <a href="#">Sale</a>
+      <a href="/product">Product</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <a href="#" class="nav-brand">LUXE</a>
+    <div class="nav-right">
+
+      
+      <a href="#">Search</a>
+      <a href="/login">Login</a>
+      <a href="/signUp">SignUp</a>
+      <a href="/logout">Logout</a>
+      <a href="#">Wishlist</a>
+      <button class="nav-cart">Bag (0)</button>
+    </div>
+  </nav>
+
+  <main>
+        {% block content %}
+        
+        {% endblock %}
+    </main>
+
+ 
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">LUXE</div>
+        <p class="footer-tagline">Crafted for those who believe that style is a form of self-expression. Sustainable. Refined. Unapologetically you.</p>
+        <div class="footer-social">
+          <a href="#">f</a>
+          <a href="#">in</a>
+          <a href="#">tw</a>
+          <a href="#">yt</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Store Locator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 LUXE Fashion Pvt. Ltd. All rights reserved.</span>
+      <span>Made with ♡ in India</span>
+    </div>
+  </footer>
+
+  <script>
+    // Carousel
+    let cur = 0;
+    const slides = document.getElementById('slides');
+    const allSlides = slides.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function goTo(n) {
+      allSlides[cur].classList.remove('active');
+      cur = ((n % allSlides.length) + allSlides.length) % allSlides.length;
+      allSlides[cur].classList.add('active');
+      slides.style.transform = `translateX(-${cur * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+    }
+
+    document.getElementById('cPrev').onclick = () => goTo(cur - 1);
+    document.getElementById('cNext').onclick = () => goTo(cur + 1);
+    dots.forEach(d => d.onclick = () => goTo(+d.dataset.i));
+    setInterval(() => goTo(cur + 1), 5000);
+
+    // Wishlist toggle
+    document.querySelectorAll('.prod-wish').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.textContent = btn.textContent === '♡' ? '♥' : '♡';
+        btn.style.color = btn.textContent === '♥' ? '#c0392b' : '';
+      });
+    });
+
+    // Newsletter
+    document.querySelector('.newsletter-form button').addEventListener('click', function() {
+      const input = document.querySelector('.newsletter-form input');
+      if (input.value.includes('@')) {
+        this.textContent = 'Subscribed ✓';
+        this.style.background = '#d4edda';
+        input.value = '';
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+ <div class="my-5">
+      <!-- Footer -->
+      <footer
+        class="text-center text-lg-start text-white"
+        style="background-color: #1c2331"
+      >
+        <!-- Section: Social media -->
+        <section
+          class="d-flex justify-content-between p-4"
+          style="background-color: #6351ce"
+        >
+          <!-- Left -->
+          <div class="me-5">
+            <span>Get connected with us on social networks:</span>
+          </div>
+          <!-- Left -->
+
+          <!-- Right -->
+          <div>
+            <a href="" class="text-white me-4">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="" class="text-white me-4">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="text-white me-4">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="" class="text-white me-4">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="" class="text-white me-4">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="" class="text-white me-4">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+          <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                <h6 class="text-uppercase fw-bold">Company name</h6>
+                <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+                <p>
+                  Here you can use rows and columns to organize your footer
+                  content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                  elit.
+                </p>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold">Products</h6>
+                <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+                <p>
+                  <a href="#!" class="text-white">MDBootstrap</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-white">MDWordPress</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-white">BrandFlow</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-white">Bootstrap Angular</a>
+                </p>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold">Useful links</h6>
+                <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+                <p>
+                  <a href="#!" class="text-white">Your Account</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-white">Become an Affiliate</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-white">Shipping Rates</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-white">Help</a>
+                </p>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold">Contact</h6>
+                <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #7c4dff; height: 2px"
+                />
+                <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
+                <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+              </div>
+              <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+          </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div
+          class="text-center p-3"
+          style="background-color: rgba(0, 0, 0, 0.2)"
+        >
+          © 2026 Copyright:
+          <a class="text-white" href="https://mdbootstrap.com/"
+            >MDBootstrap.com</a
+          >
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
+    </div>
+    <!-- End of .container -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>

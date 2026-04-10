@@ -1,0 +1,29 @@
+>>> Contact.objects.all()
+<QuerySet [<Contact: Ayush>]>
+Select * from contact;
+>>> Contact.objects.filter(name= "Ayush")
+<QuerySet [<Contact: Ayush>]>
+select * from contact where name = ayush
+>>> Contact.objects.filter(name= "Ayush", email = 'a@gmail.com')
+<QuerySet [<Contact: Ayush>]>
+select * from contact where name = ayush and gmail = a@gmail.com
+
+>>> Contact.objects.filter(Q(name= "Ayush") | Q( email = 'a@gmail.com')) 
+<QuerySet [<Contact: Ayush>]>
+Or operation in  sql
+
+ Contact.objects.filter(name__startswith="A")                        
+<QuerySet [<Contact: Ayush>]>
+Select * from Contact where name like "A%"
+
+> Contact.objects.filter(name__endswith="h")   
+<QuerySet [<Contact: Ayush>]>
+Select * from Contact where name like "%h"
+
+
+
+__gt stands for grater than
+__lt stands for less than
+__gte stands for grater than equal to
+__lte stands for less than equal to
+

@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us — LUXE{% endblock %}
+
+{% block content %}
+<style>
+  /* LUXE Contact Page Custom Styles */
+  .contact-wrapper {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+    font-family: 'DM Sans', sans-serif;
+    color: #1a1a1a;
+  }
+
+  .contact-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .contact-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .contact-header p {
+    color: #666;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  /* Form Layout */
+  .form-card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    padding: 40px;
+    margin-bottom: 80px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+  }
+
+  /* Responsive grid for mobile */
+  @media (max-width: 768px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+    .contact-header h1 {
+      font-size: 2.2rem;
+    }
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .input-group label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    color: #111;
+  }
+
+  .input-group input, 
+  .input-group textarea {
+    padding: 14px;
+    border-radius:10px;
+    border: 1px solid #ddd;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease;
+    outline: none;
+  }
+
+  .input-group input:focus, 
+  .input-group textarea:focus {
+    border-color: #111;
+  }
+
+  .btn-submit {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 18px 0;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 12px;
+    border-radius:25px;
+    
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .btn-submit:hover {
+    background: #333;
+    font-weight:bold;
+  }
+
+  /* Table Section */
+  .inquiry-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #111;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+
+  .custom-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .luxe-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  .luxe-table th {
+    text-align: left;
+    background: #f9f9f9;
+    padding: 15px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #111;
+  }
+
+  .luxe-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  .no-data {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-style: italic;
+  }
+</style>
+
+<div class="contact-wrapper">
+  <header class="contact-header">
+    <h1>Contact Us</h1>
+    <p>Our team is here to assist you with any inquiries.</p>
+  </header>
+
+  <section class="form-card">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-grid">
+        <div class="input-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="email@example.com" required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phoneNo" placeholder="+91 00000 00000">
+      </div>
+
+      <div class="input-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="How can we help you?"></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Submit Inquiry</button>
+    </form>
+  </section>
+
+  <section class="inquiry-section">
+    <h2>Recent Submissions</h2>
+    <div class="custom-table-wrapper">
+      <table class="luxe-table">
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for d in data %}
+          <tr>
+            <td><strong>{{ d.name }}</strong></td>
+            <td>{{ d.email }}</td>
+            <td>{{ d.phoneNo }}</td>
+            <td>{{ d.message }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="4" class="no-data">No inquiries found in our records.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+{% endblock %}

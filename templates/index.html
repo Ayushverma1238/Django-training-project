@@ -1,0 +1,381 @@
+{% extends "base.html" %}
+
+{% block content %}
+ <!-- HERO CAROUSEL -->
+  <section class="hero" id="hero">
+    <div class="carousel-slides" id="slides">
+      <div class="carousel-slide active">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1400&q=85" alt="New Collection"/>
+        <div class="slide-overlay"></div>
+        <div class="slide-caption">
+          <div class="tag">Spring / Summer 2026</div>
+          <h2>The New Season<br>Has Arrived</h2>
+          <p>Discover the freshest silhouettes, textures,<br>and colours for the season ahead.</p>
+          <a href="#" class="btn-ghost">Shop the Collection</a>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=85" alt="Women"/>
+        <div class="slide-overlay"></div>
+        <div class="slide-caption">
+          <div class="tag">Women's Edit</div>
+          <h2>Effortless<br>Femininity</h2>
+          <p>Timeless pieces designed for the modern woman.<br>Curated with care, worn with confidence.</p>
+          <a href="#" class="btn-ghost">Explore Women's</a>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1400&q=85" alt="Men"/>
+        <div class="slide-overlay"></div>
+        <div class="slide-caption">
+          <div class="tag">Men's Lookbook</div>
+          <h2>Dressed for<br>Every Moment</h2>
+          <p>From boardroom to weekend — sharp, refined,<br>and unmistakably you.</p>
+          <a href="#" class="btn-ghost">Shop Men's</a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-btn c-prev" id="cPrev">&#8592;</button>
+    <button class="carousel-btn c-next" id="cNext">&#8594;</button>
+    <div class="carousel-dots" id="cDots">
+      <button class="dot active" data-i="0"></button>
+      <button class="dot" data-i="1"></button>
+      <button class="dot" data-i="2"></button>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track" id="marquee">
+      <span>New Arrivals</span><span class="sep">—</span>
+      <span>Summer 2026</span><span class="sep">—</span>
+      <span>Free Shipping</span><span class="sep">—</span>
+      <span>Sustainable Fabrics</span><span class="sep">—</span>
+      <span>Handcrafted Quality</span><span class="sep">—</span>
+      <span>Exclusive Designs</span><span class="sep">—</span>
+      <span>New Arrivals</span><span class="sep">—</span>
+      <span>Summer 2026</span><span class="sep">—</span>
+      <span>Free Shipping</span><span class="sep">—</span>
+      <span>Sustainable Fabrics</span><span class="sep">—</span>
+      <span>Handcrafted Quality</span><span class="sep">—</span>
+      <span>Exclusive Designs</span><span class="sep">—</span>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-label">Shop by Category</h2>
+      <a href="#" class="section-link">View All</a>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-item">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80" alt="Women"/>
+        <div class="cat-overlay"></div>
+        <div class="cat-label"><span>Women</span><small>320+ styles</small></div>
+      </div>
+      <div class="cat-item">
+        <img src="https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?w=600&q=80" alt="Men"/>
+        <div class="cat-overlay"></div>
+        <div class="cat-label"><span>Men</span><small>240+ styles</small></div>
+      </div>
+      <div class="cat-item">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="Footwear"/>
+        <div class="cat-overlay"></div>
+        <div class="cat-label"><span>Footwear</span><small>180+ pairs</small></div>
+      </div>
+      <div class="cat-item">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80" alt="Accessories"/>
+        <div class="cat-overlay"></div>
+        <div class="cat-label"><span>Accessories</span><small>150+ pieces</small></div>
+      </div>
+      <div class="cat-item">
+        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600&q=80" alt="Kids"/>
+        <div class="cat-overlay"></div>
+        <div class="cat-label"><span>Kids</span><small>120+ styles</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRENDING PRODUCTS -->
+  <section class="section section-alt">
+    <div class="section-header">
+      <h2 class="section-label">Trending Now</h2>
+      <a href="#" class="section-link">All Products</a>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80" alt="Blazer"/>
+          <span class="prod-badge">New</span>
+          <div class="prod-actions">
+            <button class="prod-add">Add to Bag</button>
+            <button class="prod-wish">♡</button>
+          </div>
+        </div>
+        <div class="prod-stars">★★★★★</div>
+        <div class="prod-name">Oversized Linen Blazer</div>
+        <div class="prod-sub">Beige / S M L XL</div>
+        <div class="prod-price"><span class="old">₹3,499</span><span class="sale">₹2,299</span></div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80" alt="Dress"/>
+          <div class="prod-actions">
+            <button class="prod-add">Add to Bag</button>
+            <button class="prod-wish">♡</button>
+          </div>
+        </div>
+        <div class="prod-stars">★★★★☆</div>
+        <div class="prod-name">Floral Midi Wrap Dress</div>
+        <div class="prod-sub">Ivory / XS S M L</div>
+        <div class="prod-price">₹1,899</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1542219550-37153d387c27?w=600&q=80" alt="Chinos"/>
+          <span class="prod-badge badge-sale">Sale</span>
+          <div class="prod-actions">
+            <button class="prod-add">Add to Bag</button>
+            <button class="prod-wish">♡</button>
+          </div>
+        </div>
+        <div class="prod-stars">★★★★★</div>
+        <div class="prod-name">Slim Tapered Chinos</div>
+        <div class="prod-sub">Olive / 30 32 34 36</div>
+        <div class="prod-price"><span class="old">₹2,199</span><span class="sale">₹1,499</span></div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80" alt="Co-ord"/>
+          <div class="prod-actions">
+            <button class="prod-add">Add to Bag</button>
+            <button class="prod-wish">♡</button>
+          </div>
+        </div>
+        <div class="prod-stars">★★★★☆</div>
+        <div class="prod-name">Linen Co-ord Set</div>
+        <div class="prod-sub">White / XS S M</div>
+        <div class="prod-price">₹2,599</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&q=80" alt="Shirt"/>
+          <span class="prod-badge">New</span>
+          <div class="prod-actions">
+            <button class="prod-add">Add to Bag</button>
+            <button class="prod-wish">♡</button>
+          </div>
+        </div>
+        <div class="prod-stars">★★★★★</div>
+        <div class="prod-name">Relaxed Oxford Shirt</div>
+        <div class="prod-sub">Sky Blue / S M L XL</div>
+        <div class="prod-price">₹1,299</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b0f6f?w=600&q=80" alt="Jumpsuit"/>
+          <div class="prod-actions">
+            <button class="prod-add">Add to Bag</button>
+            <button class="prod-wish">♡</button>
+          </div>
+        </div>
+        <div class="prod-stars">★★★★☆</div>
+        <div class="prod-name">Wide-Leg Jumpsuit</div>
+        <div class="prod-sub">Sand / XS S M L</div>
+        <div class="prod-price">₹2,899</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1608234808654-2a8875faa7fd?w=600&q=80" alt="Sneakers"/>
+          <span class="prod-badge badge-sale">Sale</span>
+          <div class="prod-actions">
+            <button class="prod-add">Add to Bag</button>
+            <button class="prod-wish">♡</button>
+          </div>
+        </div>
+        <div class="prod-stars">★★★★★</div>
+        <div class="prod-name">Canvas Low Sneakers</div>
+        <div class="prod-sub">White / 36–44</div>
+        <div class="prod-price"><span class="old">₹3,299</span><span class="sale">₹1,999</span></div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80" alt="Bag"/>
+          <div class="prod-actions">
+            <button class="prod-add">Add to Bag</button>
+            <button class="prod-wish">♡</button>
+          </div>
+        </div>
+        <div class="prod-stars">★★★★★</div>
+        <div class="prod-name">Structured Tote Bag</div>
+        <div class="prod-sub">Tan / One Size</div>
+        <div class="prod-price">₹3,499</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPLIT CAMPAIGN BANNER -->
+  <div class="split-banner">
+    <div class="split-side">
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80" alt="Women Sale"/>
+      <div class="split-content split-dark">
+        <div class="tag">Women's Sale</div>
+        <h3>Up to 50% Off<br>Selected Styles</h3>
+        <a href="#" class="btn-ghost">Shop Women's Sale</a>
+      </div>
+    </div>
+    <div class="split-side">
+      <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=800&q=80" alt="Men Sale"/>
+      <div class="split-content split-light">
+        <div class="tag">Men's Sale</div>
+        <h3>Fresh Cuts on<br>Premium Menswear</h3>
+        <a href="#" class="btn-ghost">Shop Men's Sale</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW ARRIVALS -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-label">Just Dropped</h2>
+      <a href="#" class="section-link">View All New</a>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&q=80" alt="Summer Dress"/>
+          <span class="prod-badge">New</span>
+          <div class="prod-actions">
+            <button class="prod-add">Add to Bag</button>
+            <button class="prod-wish">♡</button>
+          </div>
+        </div>
+        <div class="prod-stars">★★★★★</div>
+        <div class="prod-name">Smocked Sundress</div>
+        <div class="prod-sub">Terracotta / XS S M L</div>
+        <div class="prod-price">₹1,699</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Kurta"/>
+          <span class="prod-badge">New</span>
+          <div class="prod-actions">
+            <button class="prod-add">Add to Bag</button>
+            <button class="prod-wish">♡</button>
+          </div>
+        </div>
+        <div class="prod-stars">★★★★☆</div>
+        <div class="prod-name">Embroidered Kurta</div>
+        <div class="prod-sub">Ivory / S M L XL</div>
+        <div class="prod-price">₹2,199</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80" alt="Tee"/>
+          <span class="prod-badge">New</span>
+          <div class="prod-actions">
+            <button class="prod-add">Add to Bag</button>
+            <button class="prod-wish">♡</button>
+          </div>
+        </div>
+        <div class="prod-stars">★★★★★</div>
+        <div class="prod-name">Graphic Printed Tee</div>
+        <div class="prod-sub">Black / XS S M L XL</div>
+        <div class="prod-price">₹799</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img-wrap">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Palazzo"/>
+          <span class="prod-badge">New</span>
+          <div class="prod-actions">
+            <button class="prod-add">Add to Bag</button>
+            <button class="prod-wish">♡</button>
+          </div>
+        </div>
+        <div class="prod-stars">★★★★☆</div>
+        <div class="prod-name">Palazzo Trousers</div>
+        <div class="prod-sub">Navy / XS S M L</div>
+        <div class="prod-price">₹1,499</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-alt">
+    <div class="section-header">
+      <h2 class="section-label">What Our Customers Say</h2>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The quality is absolutely outstanding. I ordered the linen blazer and it fits like a dream — the fabric is so breathable and the finish is impeccable."</p>
+        <div class="review-author">Priya M. — Mumbai</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Fast delivery, beautiful packaging, and the clothes look even better in person. LUXE has become my go-to for everything from casual to formal."</p>
+        <div class="review-author">Arjun S. — Bangalore</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I love the curated aesthetic. Every piece feels considered and unique. The co-ord set I bought got so many compliments at the office."</p>
+        <div class="review-author">Neha R. — Delhi</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM GRID -->
+  <section class="section" style="padding-bottom: 0;">
+    <div class="section-header">
+      <h2 class="section-label">As Styled by You</h2>
+      <a href="#" class="section-link">@luxe.fashion</a>
+    </div>
+  </section>
+  <div class="insta-grid">
+    <div class="insta-item"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&q=80" alt=""/><div class="insta-icon">✦</div></div>
+    <div class="insta-item"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80" alt=""/><div class="insta-icon">✦</div></div>
+    <div class="insta-item"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&q=80" alt=""/><div class="insta-icon">✦</div></div>
+    <div class="insta-item"><img src="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?w=400&q=80" alt=""/><div class="insta-icon">✦</div></div>
+    <div class="insta-item"><img src="https://images.unsplash.com/photo-1475180098004-ca77a66827be?w=400&q=80" alt=""/><div class="insta-icon">✦</div></div>
+    <div class="insta-item"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&q=80" alt=""/><div class="insta-icon">✦</div></div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="section" style="padding-top: 0; padding-bottom: 0;">
+    <div class="features">
+      <div class="feat-item">
+        <span class="feat-icon">🚚</span>
+        <div class="feat-title">Free Delivery</div>
+        <div class="feat-desc">On all orders above ₹999. Pan-India delivery in 2–5 days.</div>
+      </div>
+      <div class="feat-item">
+        <span class="feat-icon">↩</span>
+        <div class="feat-title">Easy Returns</div>
+        <div class="feat-desc">30-day hassle-free return policy. No questions asked.</div>
+      </div>
+      <div class="feat-item">
+        <span class="feat-icon">🔒</span>
+        <div class="feat-title">Secure Payments</div>
+        <div class="feat-desc">UPI, cards, wallets, and EMI options available.</div>
+      </div>
+      <div class="feat-item">
+        <span class="feat-icon">✦</span>
+        <div class="feat-title">Authentic Quality</div>
+        <div class="feat-desc">Every piece quality-checked before it ships to you.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="tag">Stay in the loop</div>
+    <h2>Get Early Access to<br>New Arrivals & Exclusive Offers</h2>
+    <p>Join 50,000+ subscribers. No spam, ever. Unsubscribe anytime.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Your email address"/>
+      <button type="button">Subscribe</button>
+    </div>
+  </section>
+
+    {% endblock %}
