@@ -27,3 +27,13 @@ __lt stands for less than
 __gte stands for grater than equal to
 __lte stands for less than equal to
 
+
+Deployment
+
+
+Adding static root
+import os
+add whitenoise middleware
+Install gunicorn, whitenoise
+static reloading
+debug false
