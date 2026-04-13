@@ -161,8 +161,8 @@
     display:flex;
     gap:10px;
    justify-content: space-between; ✅
-align-items: center;
-padding:20px;
+  align-items: center;
+  padding:20px;
 
   }
 </style>
@@ -191,7 +191,7 @@ padding:20px;
       <div class="project-card">
         <!-- Image -->
         <div class="project-img">
-          <img src=`{{ project.image }}` alt="Project Image" />
+          <img src="`{{" project.image }}` alt="Project Image" />
         </div>
 
         <!-- Body -->
@@ -199,8 +199,12 @@ padding:20px;
           <div class="project-title">{{ project.title|truncatewords:10 }}</div>
           <div class="project-text">{{ project.desc|truncatewords:20 }}</div>
           <div class="price-div">
-            <div class="project-title">{{ project.price|truncatewords:10 }}</div>
-            <div class="project-text">{{ project.discount|truncatewords:20 }}</div>
+            <div class="project-title">
+              {{ project.price|truncatewords:10 }}
+            </div>
+            <div class="project-text">
+              {{ project.discount|truncatewords:20 }}
+            </div>
           </div>
         </div>
 
