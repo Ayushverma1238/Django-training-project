@@ -80,16 +80,32 @@ def signupView(request):
         password = request.POST.get('password')
         cpassword = request.POST.get('cpassword')
 
-        if(password != cpassword):
-            return 
-        
-        user = User.objects.create_user(userName, email, password)
-        user.first_name =  firstName
+        # 🔴 Password mismatch
+        if password != cpassword:
+            return render(request, 'signup.html', {
+                'error': 'Passwords do not match'
+            })
+
+        # 🔴 Username exists
+        if User.objects.filter(username=userName).exists():
+            return render(request, 'signup.html', {
+                'error': 'Username already exists'
+            })
+
+        # ✅ Create user
+        user = User.objects.create_user(
+            username=userName,
+            email=email,
+            password=password
+        )
+        user.first_name = firstName
         user.last_name = lastName
         user.save()
+
         return redirect('/login')
 
     return render(request, 'signup.html')
+
 
 @ensure_csrf_cookie
 def loginView(request):
