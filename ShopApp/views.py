@@ -82,13 +82,13 @@ def signupView(request):
 
         # 🔴 Password mismatch
         if password != cpassword:
-            return render(request, 'signup.html', {
+            return render(request, 'signUp.html', {
                 'error': 'Passwords do not match'
             })
 
         # 🔴 Username exists
         if User.objects.filter(username=userName).exists():
-            return render(request, 'signup.html', {
+            return render(request, 'signUp.html', {
                 'error': 'Username already exists'
             })
 
@@ -103,7 +103,6 @@ def signupView(request):
         user.save()
 
         return redirect('/login')
-
     return render(request, 'signUp.html')
 
 
