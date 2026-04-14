@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Contact(models.Model):
     name = models.CharField(max_length=50)
@@ -21,4 +22,27 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Wishlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.user.username} - {self.product.title}"
+
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.product.title}"
+
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    size = models.CharField(max_length=10)
+
+    def __str__(self):
+        return f"{self.cart.user} - {self.product.title} ({self.quantity})"

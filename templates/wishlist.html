@@ -1,8 +1,7 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Projects - LUXE
+{% extends 'base.html' %} {% load static %} {% block title %}Wishlist - LUXE
 {%endblock %} {%block content %}
 
 <style>
-  
   .container {
     width: 85vw;
     margin: auto;
@@ -60,7 +59,7 @@
 
   /* Content */
   .project-body {
-    padding: 15px;
+    padding: 5px;
   }
 
   .project-title {
@@ -76,18 +75,23 @@
 
   /* Footer */
   .project-footer {
-    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
   }
 
   /* Buttons */
   .btn-custom {
-    padding: 8px 14px;
+    padding: 10px 15px;
     border: none;
+    width: 85%;
     border-radius: 6px;
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    margin: 5px;
+    margin: auto;
     transition: all 0.3s ease;
   }
 
@@ -175,101 +179,105 @@
 
   .price-div{
     display:flex;
-    gap:10px;
-   justify-content: space-between; ✅
-  align-items: center;
-  padding:20px;
+    
+    padding:0 20px;
 
   }
+
+  .wish-foot {
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* FIXED */
+  flex-direction: column;    /* FIXED */
+  gap: 20px;
+  margin: 30px 0 30px 0;
+}
+
+.wish-foot p {
+  color: #8A8181;
+  font-size: 14px;
+}
+
+.wish-foot button {
+  padding: 15px 60px;
+  font-weight: 600;
+  font-size:16px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+
 </style>
 
 
 <script src="{% static 'js/main.js' %}"></script>
 
-<script>
-  function openModal() {
-    document.getElementById("addModal").style.display = "flex";
-  }
 
-  function closeModal() {
-    document.getElementById("addModal").style.display = "none";
-  }
-</script>
 
 <div class="container mt-5">
-  <h1 style="text-align: center; margin: 20px 0 20px 0">Welcome to LUXE world ❤️</h1>
-  <p class="para">Check Out your today collections</p>
-
-  <button class="btn-add" onclick="openModal()">Add Items</button>
+  <h1 style="text-align: center; margin: 20px 0 20px 0">CheckOut Your favourite collections ❤️</h1>
+  {% comment %} <p class="para">Hello Handsome... Today what you want to buy</p> {% endcomment %}
 
   <div
     style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center"
   >
-    {% for project in data %}
+    {%if wishlist_items %}
+      {% for project in wishlist_items %}
 
-    <div style="width: 300px">
-      <div class="project-card">
-        <!-- Image -->
-        <div class="project-img">
-          <img src="{{ project.image.url }}" alt="Project Image" />
-        </div>
+      <div style="width: 300px ">
+        <div class="project-card">
+          <!-- Image -->
+          <div class="project-img">
+            <img src="{{ project.product.image.url }}" alt="Project Image" />
+          </div>
 
-        <!-- Body -->
-        <div class="project-body">
-          <div class="project-title">{{ project.title|truncatewords:10 }}</div>
-          <div class="project-text">{{ project.desc|truncatewords:20 }}</div>
-          <div class="price-div">
-            <div class="project-title">
-              <span>Price: </span>
-              ₹{{ project.price|truncatewords:10 }}
+          <!-- Body -->
+          <div class="project-body">
+            <div class="project-title">{{ project.product.title|truncatewords:10 }}</div>
+            <div class="project-text">{{ project.product.desc|truncatewords:20 }}</div>
+            <div class="price-div">
+              <div class="project-title">
+                <span>Price: </span>
+                ₹{{ project.product.price|truncatewords:10 }}
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Footer -->
-        <div class="project-footer">
-          <button
-            onclick="addToWishlist({{ project.id }})"
-            class="btn-custom btn-primary-custom"
-          >
-            Add to Wishlist
-          </button>
+          <!-- Footer -->
+          <div class="project-footer">
+            <button
+              onclick="removeFromWishlist({{ project.id }})"
+              class="btn-custom btn-primary-custom"
+              style="background-color: red;"
+            >
+              Remove From Wishlist
+            </button>
 
-          <button
-            onclick="addToCart({{ project.id }})"
-            class="btn-custom btn-primary-custom"
-          >
-            Add to Cart
-          </button>
+            <button
+              onclick="addToCart({{ project.id }})"
+              class="btn-custom btn-primary-custom btn-cart"
+                            style="background-color: green;"
+
+            >
+              Add to Cart
+            </button>
+          </div>
         </div>
       </div>
+
+      {% endfor %}
+    {% else %} 
+    <div class="wish-foot"> 
+      <h3 style="font-size:20px; margin: 10px 0 40px 0;">
+        Your Wishlist ❤️ is empty 
+      </h3>
+      <p class="wish-foot-para">Add items that you like to your wishlist. Review them anytime and easily move them to the bag.</p>
+      <div></div>
+      <button class="wish-foot-btn"><a href= "/"> Continue Shopping </a> </button>
     </div>
-
-    {% endfor %}
+    {% endif %}
   </div>
 </div>
 
-<!-- Modal Background -->
-<div id="addModal" class="modal-overlay">
-  <div class="modal-box">
-    <h2>Add Product</h2>
-
-    <form method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-
-      <input type="file" name="image" required />
-      <input type="text" name="title" placeholder="Title" required />
-      <input type="number" name="price" placeholder="Price" required />
-      <textarea name="desc" placeholder="Description"></textarea>
-      <input type="text" name="category" placeholder="Category" />
-      <input type="text" name="type" placeholder="Type" />
-
-      <div class="modal-buttons">
-        <button type="submit">Save</button>
-        <button type="button" onclick="closeModal()">Cancel</button>
-      </div>
-    </form>
-  </div>
-</div>
 
 {% endblock %}

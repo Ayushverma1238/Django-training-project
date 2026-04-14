@@ -2,7 +2,6 @@
 {%endblock %} {%block content %}
 
 <style>
-  
   .container {
     width: 85vw;
     margin: auto;
@@ -186,90 +185,64 @@
 
 <script src="{% static 'js/main.js' %}"></script>
 
-<script>
-  function openModal() {
-    document.getElementById("addModal").style.display = "flex";
-  }
 
-  function closeModal() {
-    document.getElementById("addModal").style.display = "none";
-  }
-</script>
 
 <div class="container mt-5">
   <h1 style="text-align: center; margin: 20px 0 20px 0">Welcome to LUXE world ❤️</h1>
-  <p class="para">Check Out your today collections</p>
-
-  <button class="btn-add" onclick="openModal()">Add Items</button>
+  <p class="para">Hello Beautiful... Today what you want to buy</p>
 
   <div
     style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center"
   >
-    {% for project in data %}
+    {%if data %}
+      {% for project in data %}
 
-    <div style="width: 300px">
-      <div class="project-card">
-        <!-- Image -->
-        <div class="project-img">
-          <img src="{{ project.image.url }}" alt="Project Image" />
-        </div>
+      <div style="width: 300px">
+        <div class="project-card">
+          <!-- Image -->
+          <div class="project-img">
+            <img src="{{ project.image.url }}" alt="Project Image" />
+          </div>
 
-        <!-- Body -->
-        <div class="project-body">
-          <div class="project-title">{{ project.title|truncatewords:10 }}</div>
-          <div class="project-text">{{ project.desc|truncatewords:20 }}</div>
-          <div class="price-div">
-            <div class="project-title">
-              <span>Price: </span>
-              ₹{{ project.price|truncatewords:10 }}
+          <!-- Body -->
+          <div class="project-body">
+            <div class="project-title">{{ project.title|truncatewords:10 }}</div>
+            <div class="project-text">{{ project.desc|truncatewords:20 }}</div>
+            <div class="price-div">
+              <div class="project-title">
+                <span>Price: </span>
+                ₹{{ project.price|truncatewords:10 }}
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Footer -->
-        <div class="project-footer">
-          <button
-            onclick="addToWishlist({{ project.id }})"
-            class="btn-custom btn-primary-custom"
-          >
-            Add to Wishlist
-          </button>
+          <!-- Footer -->
+          <div class="project-footer">
+            <button
+              onclick="addToWishlist({{ project.id }})"
+              class="btn-custom btn-primary-custom"
+            >
+              Add to Wishlist
+            </button>
 
-          <button
-            onclick="addToCart({{ project.id }})"
-            class="btn-custom btn-primary-custom"
-          >
-            Add to Cart
-          </button>
+            <button
+              onclick="addToCart({{ project.id }})"
+              class="btn-custom btn-primary-custom"
+            >
+              Add to Cart
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
-    {% endfor %}
+      {% endfor %}
+    {% else %}  
+      <h3 style="font-size:20px; text-align:center; margin: 10px 0 40px 0;">
+        Sorry ❤️, For that we don't have any collection for you.
+      </h3>
+    {% endif %}
   </div>
 </div>
 
-<!-- Modal Background -->
-<div id="addModal" class="modal-overlay">
-  <div class="modal-box">
-    <h2>Add Product</h2>
-
-    <form method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-
-      <input type="file" name="image" required />
-      <input type="text" name="title" placeholder="Title" required />
-      <input type="number" name="price" placeholder="Price" required />
-      <textarea name="desc" placeholder="Description"></textarea>
-      <input type="text" name="category" placeholder="Category" />
-      <input type="text" name="type" placeholder="Type" />
-
-      <div class="modal-buttons">
-        <button type="submit">Save</button>
-        <button type="button" onclick="closeModal()">Cancel</button>
-      </div>
-    </form>
-  </div>
-</div>
 
 {% endblock %}

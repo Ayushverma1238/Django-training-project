@@ -127,9 +127,11 @@ a {
 
 .nav-cart {
   background: var(--black);
+  opacity: 0.9;
   color: #fff;
   padding: 8px 18px;
   font-size: 11px;
+  border-radius: 18px;
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
@@ -139,6 +141,8 @@ a {
 
 .nav-cart:hover {
   background: var(--dark);
+  opacity: 1;
+  scale: 1.1;
 }
 
 /* ── HERO CAROUSEL ── */
@@ -162,6 +166,19 @@ a {
   height: 100%;
   position: relative;
   overflow: hidden;
+}
+
+.nav-elem {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* When screen width is less than 1080px */
+@media (max-width: 1150px) {
+  .nav-elem {
+    display: none;
+  }
 }
 
 .carousel-slide img {
@@ -881,12 +898,22 @@ footer {
   opacity: 0.35;
 }
 
+@media (max-width: 500px) {
+  .nav-brand {
+    display: none;
+  }
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .navbar {
     padding: 0 1.5rem;
+   
   }
 
+  .nav-brand{
+    display: none;
+  }
   .nav-brand {
     font-size: 22px;
   }
@@ -894,7 +921,7 @@ footer {
   .nav-left {
     display: none;
   }
-
+ 
   .prod-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -953,3 +980,16 @@ footer {
     font-weight: 600;
   }
 }
+
+.wishlist{
+  display:flex;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  div{
+    position: absolute;
+    top: 0;
+    right: -3px;
+  }
+}
+

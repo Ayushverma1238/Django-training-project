@@ -17,6 +17,7 @@
       href='https://cdn-icons-png.flaticon.com/512/263/263142.png'
     />
     <link href="../static/css/base.css" rel="stylesheet" />
+    <script src="{% static 'js/main.js' %}"></script>
 
   </head>
   <body>
@@ -29,15 +30,17 @@
     <!-- NAVBAR -->
     <nav class="navbar">
       <div class="nav-left">
-        <a href="#">Women</a>
-        <a href="#">Men</a>
-        <a href="#">Kids</a>
-        <a href="#">Sale</a>
+        <div class="nav-elem">
+
+        <a href="/womens-collection">Women</a>
+        <a href="/mens-collection">Men</a>
+        <a href="/kids-collection">Kids</a>
+        </div>
         <a href="/product">Product</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
       </div>
-      <a href="#" class="nav-brand">LUXE</a>
+      <a href="/" class="nav-brand">LUXE</a>
       <div class="nav-right">
         <a href="#">Search</a>
         {% if not request.user.is_authenticated %}
@@ -46,8 +49,16 @@
         {%else%}
         <button style="color:white;" class = "btn"><a href="/logout">Logout</a></button>
         {%endif%}
-        <a href="#"><img style="height:30px; width:30px; background-color:white;" src = "../static/images/download.png" alt="wishlist" /></a>
-        <button class="nav-cart">Bag (0)</button>
+        <div class="wishlist">
+          <a href="/wishlist"><img style="height:30px; width:30px; background-color:white;" src = "../static/images/download.png" alt="wishlist" /></a>
+          <div id ='totalWishlist'>{{wishlist_count}}</div>
+        </div> 
+        <a href = "/cart" style="color:white;" class="nav-cart  rounded-lg bg-gray-700">
+            <span class= "">Bag</span>
+            <span id = "totalBag">{{cart_count}}</span>
+        </a>
+
+        
       </div>
     </nav>
 
