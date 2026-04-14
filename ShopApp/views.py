@@ -104,7 +104,7 @@ def signupView(request):
 
         return redirect('/login')
 
-    return render(request, 'signup.html')
+    return render(request, 'signUp.html')
 
 
 @ensure_csrf_cookie
