@@ -16,8 +16,6 @@ def about(request):
 
 
 def product(request):
-    if not request.user.is_authenticated:
-        return redirect('/login')
     if request.method == "POST":
         image = request.FILES.get('image')
         imageUrl = request.POST.get('imageUrl')
@@ -192,25 +190,17 @@ def cart(request):
 # Women, Man, Kids collection
 
 def women(request):
-    if not request.user.is_authenticated:
-        return redirect('/login')
     
     data = Product.objects.filter(category = "women")
     return render(request, 'women.html', {'data': data})
 
 
 def men(request):
-    if not request.user.is_authenticated:
-        return redirect('/login')
-    
     data = Product.objects.filter(category = "men")
     return render(request, 'mens.html', {'data': data})
 
 
 def kids(request):
-    if not request.user.is_authenticated:
-        return redirect('/login')
-    
     data = Product.objects.filter(category = "kids")
     return render(request, 'kids.html', {'data': data})
 

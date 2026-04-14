@@ -141,7 +141,7 @@ a {
   text-transform: uppercase;
   cursor: pointer;
   border: none;
-  transition: background 0.2s;
+  transition: all 0.2s;
 }
 
 .nav-cart:hover {
