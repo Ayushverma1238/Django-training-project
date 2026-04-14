@@ -172,7 +172,12 @@
           {% for item in cart_items %}
           <div class="item">
             <!-- Image -->
-            <img src="{{ item.product.image.url }}" />
+            {% if project.image %}
+              <img src="{{ item.product.image.url }}" alt="Project Image" />
+            {% else %}
+              <img src="{{ item.product.imageUrl }}" alt="Project Image" />
+            {% endif %}
+            
 
             <!-- Details -->
             <div class="details">
@@ -258,7 +263,7 @@
 
             <div class="row">
                 <span>Delivery</span>
-                <span id="delivery">{{ delivery }}</span>
+                <span id="delivery">+ ₹{{ delivery }}</span>
             </div>
 
             <hr />

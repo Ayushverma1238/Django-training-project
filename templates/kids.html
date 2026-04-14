@@ -2,7 +2,7 @@
 {%endblock %} {%block content %}
 
 <style>
-  .container {
+  .container-kids {
     width: 85vw;
     margin: auto;
     background-color: #FAFAFA;
@@ -24,7 +24,7 @@
     border-radius: 12px;
     overflow: hidden;
     margin-bottom:10px;
-    height:500px;
+    height:530px;
     background: #fff;
     transition: all 0.4s ease;
     position: relative;
@@ -187,7 +187,7 @@
 
 
 
-<div class="container mt-5">
+<div class="container-kids mt-5">
   <h1 style="text-align: center; margin: 20px 0 20px 0">Welcome to LUXE world ❤️</h1>
   <p class="para">Hello, Today what you want to buy</p>
 
@@ -201,7 +201,11 @@
         <div class="project-card">
           <!-- Image -->
           <div class="project-img">
+            {% if project.image %}
             <img src="{{ project.image.url }}" alt="Project Image" />
+          {% else %}
+            <img src="{{ project.imageUrl }}" alt="Project Image" />
+          {% endif %}
           </div>
 
           <!-- Body -->

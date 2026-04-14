@@ -3,7 +3,7 @@
 
 <style>
   
-  .container {
+  .container-product {
     width: 85vw;
     margin: auto;
     background-color: #FAFAFA;
@@ -25,7 +25,7 @@
     border-radius: 12px;
     overflow: hidden;
     margin-bottom:10px;
-    height:500px;
+    height:530px;
     background: #fff;
     transition: all 0.4s ease;
     position: relative;
@@ -196,7 +196,7 @@
   }
 </script>
 
-<div class="container mt-5">
+<div class="container-product mt-5">
   <h1 style="text-align: center; margin: 20px 0 20px 0">Welcome to LUXE world ❤️</h1>
   <p class="para">Check Out your today collections</p>
 
@@ -211,7 +211,11 @@
       <div class="project-card">
         <!-- Image -->
         <div class="project-img">
-          <img src="{{ project.image.url }}" alt="Project Image" />
+          {% if project.image %}
+            <img src="{{ project.image.url }}" alt="Project Image" />
+          {% else %}
+            <img src="{{ project.imageUrl }}" alt="Project Image" />
+          {% endif %}
         </div>
 
         <!-- Body -->
@@ -257,7 +261,8 @@
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
 
-      <input type="file" name="image" required />
+      <input type="file" name="image" />
+      <input type="text" name="imageUrl" placeholder="Image Url " />
       <input type="text" name="title" placeholder="Title" required />
       <input type="number" name="price" placeholder="Price" required />
       <textarea name="desc" placeholder="Description"></textarea>

@@ -93,7 +93,12 @@ a {
 }
 
 .nav-left a:hover {
+  
   color: var(--black);
+}
+
+.nav-left a:hover{
+  text-decoration: underline;
 }
 
 .nav-brand {
@@ -172,6 +177,10 @@ a {
   display: flex;
   align-items: center;
   gap: 30px;
+}
+
+.nav-elem > a:hover{
+  text-decoration: underline;
 }
 
 /* When screen width is less than 1080px */

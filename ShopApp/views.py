@@ -20,6 +20,7 @@ def product(request):
         return redirect('/login')
     if request.method == "POST":
         image = request.FILES.get('image')
+        imageUrl = request.POST.get('imageUrl')
         title = request.POST.get('title')
         price = request.POST.get('price')
         discount = request.POST.get('discount')
@@ -31,12 +32,13 @@ def product(request):
         if not Product.objects.filter(title=title).exists():
             Product.objects.create(
                 image=image,
+                imageUrl = imageUrl,
                 title=title,
                 price=price,
                 discount=discount,
                 desc=desc,
                 category=category,
-                type=type
+                type=type,
             )
 
         return redirect('product')
@@ -147,27 +149,36 @@ def remove_from_wishlist(request, id):
 
     return JsonResponse({"status": "deleted"})
 
-
 def add_to_cart(request, id):
     if not request.user.is_authenticated:
         return JsonResponse({'error': 'Login required'}, status=401)
 
-    product = Product.objects.get(id=id)
+    try:
+        product = Product.objects.get(id=id)
+    except Product.DoesNotExist:
+        return JsonResponse({'error': 'Product not found'}, status=404)
 
-    # ✅ ALWAYS use get_or_create
-    cart, created = Cart.objects.get_or_create(user=request.user)
+    # ✅ Get or create cart
+    cart, _ = Cart.objects.get_or_create(user=request.user)
 
-    # ✅ Check if item already exists
+    # ✅ Get or create cart item
     item, created = CartItem.objects.get_or_create(
         cart=cart,
-        product=product
+        product=product,
+        defaults={'quantity': 1}
     )
 
     if not created:
         item.quantity += 1
         item.save()
 
-    return JsonResponse({'status': 'added'})
+    return JsonResponse({
+        'status': 'success',
+        'message': 'Item added to cart',
+        'quantity': item.quantity
+    })
+
+
 # cart item
 def cart(request):
     if not request.user.is_authenticated:
@@ -217,9 +228,6 @@ def remove_from_cart(request, id):
         print("NOT FOUND ❌")
         return JsonResponse({"error": "Item not found"}, status=404)
 
-from django.shortcuts import render
-from .models import Cart, CartItem
-
 def cart_view(request):
     if not request.user.is_authenticated:
         return redirect('/login')
@@ -244,30 +252,41 @@ def cart_view(request):
 
     return render(request, "bag.html", context)
 
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+
 def update_cart_qty(request):
-    item_id = request.GET.get('id')
-    qty = int(request.GET.get('qty'))
+    try:
+        item_id = request.GET.get('id')
+        qty = int(request.GET.get('qty', 1))
 
-    item = Cart.objects.get(id=item_id)
-    item.quantity = qty
-    item.save()
+        item = get_object_or_404(
+            CartItem,
+            id=item_id,
+            cart__user=request.user
+        )
+        
+        item.quantity = qty
+        item.save()
 
-    # Recalculate cart
-    cart = Cart.objects.get(user=request.user)
-    cart_items = CartItem.objects.filter(cart=cart)
+        # ✅ Use same cart (VERY IMPORTANT)
+        cart = item.cart
+        cart_items = CartItem.objects.filter(cart=cart)
 
-    total_mrp = sum(i.product.price * i.quantity for i in cart_items)
-    discount = sum((i.product.old_price - i.product.price) * i.quantity for i in cart_items)
-    
-    delivery = "FREE" if total_mrp > 500 else 50
-    total = total_mrp - discount + (0 if delivery == "FREE" else delivery)
+        total_mrp = sum(i.product.price * i.quantity for i in cart_items)
+        
+        discount = 0
 
-    item_total = item.product.price * item.quantity
-    print(cart_items, total_mrp)
-    return JsonResponse({
-        'total_mrp': total_mrp,
-        'discount': discount,
-        'delivery': delivery,
-        'total': total,
-        'item_total': item_total   # 👈 new
-    })
+        total = total_mrp - discount
+        item_total = item.product.price * item.quantity
+        print(item_total)
+        return JsonResponse({
+            'total_mrp': total_mrp,
+            'discount': discount,
+            'total': total,
+            'item_total': item_total
+        })
+
+    except Exception as e:
+        print("ERROR:", e)
+        return JsonResponse({'error': str(e)}, status=500)
