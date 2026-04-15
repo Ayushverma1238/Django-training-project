@@ -50,9 +50,10 @@
         {%else%}
         <button style="color:white;" class = "btn"><a href="/logout">Logout</a></button>
         {%endif%}
-        <div class="wishlist">
+        <div title="Wishlist" class="wishlist">
           <a href="/wishlist"><img style="height:30px; width:30px; background-color:white;" src = "../static/images/download.png" alt="wishlist" /></a>
-          <div id ='totalWishlist'>{{wishlist_count}}</div>
+          <div id ='totalWishlist'><span style= "color:black;">{{wishlist_count}}</span></div>
+
         </div> 
         <a href = "/cart" style="color:white;" class="nav-cart  rounded-lg bg-gray-700">
             <span class= "">Bag</span>
