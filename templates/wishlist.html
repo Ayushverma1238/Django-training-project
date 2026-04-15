@@ -228,7 +228,11 @@
         <div class="project-card">
           <!-- Image -->
           <div class="project-img">
-            <img src="{{ project.product.image.url }}" alt="Project Image" />
+            {% if project.image %}
+              <img src="{{ project.product.image.url }}" alt="Project Image" />
+            {% else %}
+              <img src="{{ project.product.imageUrl }}" alt="Project Image" />
+            {% endif %}
           </div>
 
           <!-- Body -->
