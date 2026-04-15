@@ -37,13 +37,13 @@
           <a href="/mens-collection">Men</a>
           <a href="/kids-collection">Kids</a>
         </div>
-        <a href="/product">Product</a>
+        <a class="product-link" href="/product">Product</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
       </div>
       <a href="/" class="nav-brand">LUXE</a>
       <div class="nav-right">
-        <a href="#">Search</a>
+        <a class="search-btn" href="#">Search</a>
         {% if not request.user.is_authenticated %}
         <button style="color:white;" class="btn"><a href="/login">Login</a></button>
         <button style="color:white;" class="btn"><a href="/signUp">SignUp</a></button>

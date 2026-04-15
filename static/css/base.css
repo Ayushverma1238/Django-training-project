@@ -188,6 +188,9 @@ a {
   .nav-elem {
     display: none;
   }
+  .search-btn{
+    display: none;
+  }
 }
 
 .carousel-slide img {
@@ -911,6 +914,9 @@ footer {
   .nav-brand {
     display: none;
   }
+  .product-link{
+    display: block;
+  }
 }
 
 /* ── RESPONSIVE ── */
@@ -928,6 +934,7 @@ footer {
   }
 
   .nav-left {
+
     display: none;
   }
  
